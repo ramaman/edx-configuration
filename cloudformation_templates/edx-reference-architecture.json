@@ -13,8 +13,8 @@
     },
     "KeyName":{
       "Type":"String",
-      "Description":"Name of an existing EC2 KeyPair to enable SSH access to the web server",
-      "Default":"deployment"
+      "Description":"AWS Keypair",
+      "Default":"edx-pair.pem"
     },
     "EdxappInstanceType":{
       "Description":"WebServer EC2 instance type",
@@ -448,8 +448,8 @@
       "us-west-2":       { "AZone0":"us-west-2a",      "AZone1":"us-west-2b",      "AZone2":"us-west-2c" },
       "eu-west-1":       { "AZone0":"eu-west-1a",      "AZone1":"eu-west-1b",      "AZone2":"eu-west-1c" },
       "sa-east-1":       { "AZone0":"sa-east-1a",      "AZone1":"sa-east-1b",      "AZone2":"sa-east-1c" },
-      "ap-southeast-1":  { "AZone0":"ap-southeast-1a", "AZone1":"ap-southeast-1b", "AZone2":"ap-southeast-1c" },
-      "ap-southeast-2":  { "AZone0":"ap-southeast-2a", "AZone1":"ap-southeast-2b", "AZone2":"ap-southeast-2c" },
+      "ap-southeast-1":  { "AZone0":"ap-southeast-1a", "AZone1":"ap-southeast-1b", "AZone2":"ap-southeast-1a" },
+      "ap-southeast-2":  { "AZone0":"ap-southeast-2a", "AZone1":"ap-southeast-2b", "AZone2":"ap-southeast-2a" },
       "ap-northeast-1":  { "AZone0":"ap-northeast-1a", "AZone1":"ap-northeast-1b", "AZone2":"ap-northeast-1c" }
     }
   },
@@ -2172,7 +2172,7 @@
         "KeyName":{
           "Ref":"KeyName"
         },
-        "IamInstanceProfile" : { 
+        "IamInstanceProfile" : {
           "Ref" : "NATMonitorRoleProfile"
         },
         "SubnetId":{
@@ -3512,7 +3512,7 @@
             "FromPort":"6163",
             "ToPort":"6163",
             "SourceSecurityGroupId" : {
-		"Ref" : "RabbitMQELBSecurityGroup" 
+		"Ref" : "RabbitMQELBSecurityGroup"
 	    }
           },
           {
@@ -3868,8 +3868,8 @@
             "IpProtocol":"tcp",
             "FromPort":"80",
             "ToPort":"80",
-            "SourceSecurityGroupId" : { 
-		"Ref" : "XServerELBSecurityGroup" 
+            "SourceSecurityGroupId" : {
+		"Ref" : "XServerELBSecurityGroup"
 	    }
           }
         ]
